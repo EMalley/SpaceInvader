@@ -12,12 +12,23 @@ class Ship():
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
         
+        
         # Place ship at bottom of the sreen
         self.rect.centerx = self.screen_rect.centerx
         self.rect.bottom = self.screen_rect.bottom
         
         # make ship the right size & scale it correctly
-        self.imageSize = (0,0)    
+        self.imageSize = (0,0)
+        
+        # Movement flags
+        self.movingRight = False
+        self.movingLeft = False
+
+    def update(self):
+        if self.movingRight:
+            self.rect.centerx += 1
+        if self.movingLeft:
+            self.rect.centerx -= 1        
     
     def blitme(self):
         """Draw the ship at its current location"""
