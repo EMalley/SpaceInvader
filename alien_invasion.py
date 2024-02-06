@@ -14,13 +14,13 @@ def runGame():
     screen = pygame.display.set_mode((ai_settings.screen_width, ai_settings.screen_height))
     pygame.display.set_caption("Space Invaders")
     
-    ship = Ship(screen)
+    ship = Ship(ai_settings, screen)
 
     # While loop logic for Game
     # Reference game_functions.py for functions
     while True:
         gf.checkEvents(ship)
-        ship.update()
+        ship.update(ai_settings, screen)
         gf.updateScreen(ai_settings,screen,ship)
         
 runGame()
