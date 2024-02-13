@@ -1,4 +1,5 @@
 import pygame
+from pygame.sprite import Group
 
 # Custom Modules
 from settings import Settings
@@ -16,13 +17,16 @@ def runGame():
     pygame.display.set_caption("Space Invaders")
 
     ship = Ship(ai_settings, screen)
+    # make a group that stores bullets
+    bullets = Group()
 
     # While loop logic for Game
     # Reference game_functions.py for functions
     while True:
-        gf.checkEvents(ship)
+        gf.checkEvents(ai_settings, screen, ship, bullets)
         ship.update(ai_settings, screen)
-        gf.updateScreen(ai_settings, screen, ship)
+        bullets.update()
+        gf.updateScreen(ai_settings, screen, ship, bullets)
 
 
 runGame()
