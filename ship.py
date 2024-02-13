@@ -1,7 +1,6 @@
 import pygame
 
 class Ship():
-    
     def __init__(self, ai_settings, screen):
         """Initalize the ship and set its Starting Position"""
         self.screen = screen
@@ -29,12 +28,12 @@ class Ship():
 
     def update(self, ai_settings, screen):
         """update ships pos based on movement flags"""
-        if self.movingRight:
+        if self.movingRight and self.rect.right < self.screen_rect.right:
             self.center += self.aiSettings.shipSpeed
-            # self.rect.centerx += 1
-        if self.movingLeft:
+        
+        if self.movingLeft and self.rect.left > 0:
             self.center -= self.aiSettings.shipSpeed
-            # self.rect.centerx -= 1        
+                
             
         # update rect object from self.center
         self.rect.centerx = self.center
